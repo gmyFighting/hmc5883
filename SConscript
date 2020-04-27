@@ -1,23 +1,19 @@
+# RT-Thread building script for bridge
+
 from building import *
 Import('rtconfig')
 
 src   = []
 cwd   = GetCurrentDir()
 
-# add mpu6xxx src files.
-if GetDepend('PKG_USING_MPU6XXX'):
-    src += Glob('src/mpu6xxx.c')
+# add hmc5883 src files.
+src += Glob('src/sensor_intf_hmc5883.c')
+src += Glob('src/hmc5883.c')
 
-if GetDepend('RT_USING_SENSOR'):
-    src += Glob('src/sensor_inven_mpu6xxx.c')
-
-if GetDepend('PKG_USING_MPU6XXX_SAMPLE'):
-    src += Glob('samples/mpu6xxx_sample.c')
-
-# add mpu6xxx include path.
-path  = [cwd + '/inc']
+# add hmc5883 include path.
+path  = [cwd, cwd + '/inc']
 
 # add src and include to group.
-group = DefineGroup('mpu6xxx', src, depend = ['PKG_USING_MPU6XXX'], CPPPATH = path)
+group = DefineGroup('hmc5883', src, depend = ['PKG_USING_HMC5883'], CPPPATH = path)
 
 Return('group')
