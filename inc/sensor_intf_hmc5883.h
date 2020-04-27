@@ -14,6 +14,6 @@
 #include "sensor.h"
 #include "hmc5883.h"
 
-int rt_hw_hmc5883_init(const char *name, struct rt_sensor_config *cfg);
+rt_err_t rt_hw_hmc5883_init(const char *name, struct rt_sensor_config *cfg);
 
 #endif

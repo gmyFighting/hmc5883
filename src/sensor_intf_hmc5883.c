@@ -150,7 +150,7 @@ static struct rt_sensor_ops sensor_ops =
     _hmc5883_control
 };
 
-int rt_hw_hmc5883_init(const char *name, struct rt_sensor_config *cfg)
+rt_err_t rt_hw_hmc5883_init(const char *name, struct rt_sensor_config *cfg)
 {
     rt_int8_t result;
     rt_sensor_t sensor_mag = RT_NULL;
